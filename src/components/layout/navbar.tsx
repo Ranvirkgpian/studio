@@ -12,13 +12,7 @@ import {
   Home,
   GraduationCap,
 } from "lucide-react";
-import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-  MenubarItem,
-} from "@/components/ui/menubar";
+
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -35,24 +29,22 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <Menubar className="border-none rounded-none">
+    <nav className="flex flex-wrap justify-center gap-4 py-4 md:flex-nowrap md:items-center md:gap-5 lg:gap-6">
       {navItems.map((item) => (
-        <MenubarMenu key={item.href}>
-          <Link href={item.href} passHref>
-            <MenubarTrigger
-              className={cn(
-                "cursor-pointer",
-                pathname === item.href
-                  ? "bg-accent text-accent-foreground"
-                  : ""
-              )}
-            >
-              <item.icon className="h-5 w-5 mr-2" />
-              {item.label}
-            </MenubarTrigger>
-          </Link>
-        </MenubarMenu>
+        <Link
+          key={item.href}
+          href={item.href}
+          className={cn(
+            "flex basis-1/4 flex-col items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground md:flex-row md:basis-auto",
+            pathname === item.href
+              ? "bg-accent text-accent-foreground"
+              : "text-muted-foreground"
+          )}
+        >
+          <item.icon className="h-5 w-5" />
+          <span>{item.label}</span>
+        </Link>
       ))}
-    </Menubar>
+    </nav>
   );
 }
