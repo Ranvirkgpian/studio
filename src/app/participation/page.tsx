@@ -1,12 +1,11 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ListChecks, Trophy, Laptop, Users, Lightbulb, Car } from "lucide-react"; // Example icons, added Car for Road Safety
-import { cn } from "@/lib/utils";
+import { Trophy, Lightbulb, Car } from "lucide-react";
 
 interface ParticipationItem {
   id: string;
   title: string;
-  category: "Sports" | "Tech" | "Quizzes" | "Hackathons" | "Cultural";
+  category: "Sports" | "Quizzes" | "Hackathons";
   description?: string;
   icon: React.ElementType;
 }
@@ -28,75 +27,53 @@ const participationItems: ParticipationItem[] = [
   },
   {
     id: "3",
-    title: "NSO HOCKEY PLAYER",
+    title: "NSO Hockey Player",
     category: "Sports", 
-    description: "Member of the NSO Hockey team for two years", 
+    description: "Member of the NSO Hockey team for two years, representing IIT Kharagpur in various tournaments.",
     icon: Trophy 
   },
   {
     id: "4",
-    title: "General Knowledge Quiz's",
+    title: "General Knowledge Quizzes",
     category: "Quizzes",
-    description: "Participated Variety of Quizzes Competition.",
+    description: "Participated in a variety of quiz competitions.",
     icon: Lightbulb
   },
   {
     id: "5",
     title: "Road Safety Hackathon", 
     category: "Hackathons",
-    description: "Participating Road Safety Hackathon organises by Indian Government",
+    description: "Participated in a Road Safety Hackathon organized by the Indian Government.",
     icon: Car 
   },
-  {
-    id: "6",
-    title: "NSO HOCKEY PLAYER", 
-    category: "Sports", 
-    description: "Represented IIT Kharagpur as part of the NSO Hockey team in various tournaments.", 
-    icon: Trophy 
-  }
 ];
 
 export default function ParticipationPage() {
-  // Filter out duplicate entries by title before rendering
-  const uniqueParticipationItems = participationItems.reduce((acc, current) => {
-    const x = acc.find(item => item.title === current.title && item.category === current.category && item.description === current.description);
-    if (!x) {
-      return acc.concat([current]);
-    } else {
-      return acc;
-    }
-  }, [] as ParticipationItem[]);
-
-
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-4xl font-bold mb-8 text-primary">My Participations</h1>
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-        {uniqueParticipationItems.map((item) => (
-          <Card key={item.id} className="shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
-            <CardHeader className="flex-shrink-0">
-              <div className="flex items-center mb-2">
-                <item.icon className="h-8 w-8 mr-3 text-primary" />
-                <CardTitle className="text-xl font-semibold text-primary">{item.title}</CardTitle>
+    <div className="container mx-auto py-12 px-4 md:px-6">
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+        My Participations
+      </h1>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {participationItems.map((item) => (
+          <Card key={item.id} className="shadow-sm hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <div className="flex items-center gap-4">
+                <item.icon className="h-8 w-8 text-primary" />
+                <div>
+                  <CardTitle>{item.title}</CardTitle>
+                  <CardDescription>{item.category}</CardDescription>
+                </div>
               </div>
-              <CardDescription className={cn(
-                "text-sm px-2 py-1 rounded-full inline-block bg-accent/20", // Common styles including background
-                item.category === "Sports" || item.category === "Tech" || item.category === "Quizzes" || item.category === "Hackathons"
-                  ? "font-bold text-foreground" // For "Sports", "Tech", "Quizzes", or "Hackathons": bold, dark black text
-                  : "font-medium text-accent-foreground/80" // Original style for others
-              )}>
-                {item.category}
-              </CardDescription>
             </CardHeader>
-            <CardContent className="flex-grow">
+            <CardContent>
               {item.description && (
-                <p className="text-base text-muted-foreground">{item.description}</p>
+                <p className="text-muted-foreground">{item.description}</p>
               )}
             </CardContent>
           </Card>
         ))}
       </div>
-       <p className="mt-12 text-center text-muted-foreground">Actively seeking new opportunities and experiences!</p>
     </div>
   );
 }
