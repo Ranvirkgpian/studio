@@ -70,13 +70,15 @@ export default function ProjectsPage() {
   }, []);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-4xl font-bold mb-8 text-primary">Project Portfolio</h1>
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-1">
+    <div className="container mx-auto py-12 px-4 md:px-6">
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+        Project Portfolio
+      </h1>
+      <div className="grid gap-8 md:grid-cols-2">
         {projects.map((project) => (
-          <Card key={project.id} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+          <Card key={project.id} className="overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
             {project.imageUrl && (
-              <div className="relative w-full h-64 flex-shrink-0">
+              <div className="relative w-full h-56">
                 <Image
                   src={project.imageUrl}
                   alt={project.title}
@@ -86,48 +88,45 @@ export default function ProjectsPage() {
                 />
               </div>
             )}
-            <CardHeader className="p-6 flex-shrink-0">
-              <CardTitle className="text-2xl font-semibold text-primary">{project.title}</CardTitle>
+            <CardHeader>
+              <CardTitle className="text-xl font-semibold">{project.title}</CardTitle>
             </CardHeader>
-            <CardContent className="p-6 pt-0 flex flex-col flex-grow">
-              <div className="flex-grow">
-                <CardDescription className="text-base mb-4">{project.description}</CardDescription>
-                {project.details?.length > 0 && (
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2">Details:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                      {project.details.map((detail, index) => {
-                        if (detail.startsWith("Project Link: ")) {
-                          const url = detail.substring("Project Link: ".length);
-                          return (
-                            <li key={index}>
-                              Project Link:{" "}
-                              <Link
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary hover:underline"
-                              >
-                                Open Project Folder
-                              </Link>
-                            </li>
-                          );
-                        }
-                        return <li key={index}>{detail}</li>;
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </div>
-              <div className="mt-auto self-start">
+            <CardContent className="flex flex-col flex-grow">
+              <CardDescription className="mb-4">{project.description}</CardDescription>
+              {project.details?.length > 0 && (
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-2 text-sm">Details:</h4>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                    {project.details.map((detail, index) => {
+                      if (detail.startsWith("Project Link: ")) {
+                        const url = detail.substring("Project Link: ".length);
+                        return (
+                          <li key={index}>
+                            Project Link:{" "}
+                            <Link
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline"
+                            >
+                              Open Project Folder
+                            </Link>
+                          </li>
+                        );
+                      }
+                      return <li key={index}>{detail}</li>;
+                    })}
+                  </ul>
+                </div>
+              )}
+              <div className="mt-auto pt-4">
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-primary text-primary hover:bg-primary/10"
                   onClick={() => handleViewClick(project.viewUrls)}
                   disabled={!project.viewUrls || project.viewUrls.length === 0 || project.viewUrls[0] === "#"}
                 >
-                  View
+                  View Details
                 </Button>
               </div>
             </CardContent>

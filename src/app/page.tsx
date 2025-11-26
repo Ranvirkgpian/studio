@@ -1,89 +1,51 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Linkedin, Instagram } from 'lucide-react';
+import { ArrowRight, Linkedin, Instagram } from 'lucide-react';
 import { TwitterIcon } from '@/components/icons/twitter-icon'; // Import TwitterIcon
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-[calc(100vh-4rem)]">
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="w-full py-8 sm:py-12 md:py-16 lg:py-20 xl:py-28 bg-gradient-to-r from-violet-800 via-purple-600 to-violet-800 dark:from-violet-950 dark:via-purple-800 dark:to-violet-950">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16 items-center">
-              {/* Profile Picture Section */}
-              <div
-                className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-lg overflow-hidden shadow-2xl border-4 border-primary/30 hover:border-primary/70 transition-all duration-300 transform hover:scale-105 mx-auto"
-              >
-                <Image
-                  src="/Full.jpg" 
-                  alt="Ranvir Kumar"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  priority
-                  sizes="(max-width: 639px) 14rem, (max-width: 767px) 16rem, (max-width: 1023px) 20rem, (max-width: 1279px) 24rem, 28rem"
-                  data-ai-hint="profile picture"
-                />
-              </div>
-              <div className="flex flex-col justify-center space-y-6 text-center lg:text-left">
-                <div className="space-y-3">
-                  <h1 
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-primary-foreground dark:text-primary-foreground"
-                    style={{ textShadow: '2px 2px 6px rgba(0, 0, 0, 0.3)' }}
-                  >
+              <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
+                <div className="space-y-2">
+                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                     Ranvir Kumar
                   </h1>
-                  <p className="text-xl text-primary-foreground/90 md:text-2xl dark:text-primary-foreground/80">
+                  <p className="text-xl text-muted-foreground md:text-2xl">
                     B.Tech Civil Engineering, IIT Kharagpur
                   </p>
                 </div>
-                <p className="max-w-[600px] text-primary-foreground/80 md:text-lg mx-auto lg:mx-0 dark:text-primary-foreground/70">
-                  My name is Ranvir Kumar.I am a third year undergraduate student of the department of civil engineering enrolled in its B.tech course.I am a boarder of Jagdish Chandra Bose hall of residence.I am from Patna,Bihar.
+                <p className="max-w-[600px] text-muted-foreground md:text-xl mx-auto lg:mx-0">
+                  A passionate and dedicated civil engineering student with a strong foundation in structural analysis, design, and project management. Eager to apply my skills and knowledge to solve real-world challenges.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                  <Button asChild variant="outline" size="md" className="border-transparent text-white hover:opacity-90" style={{ backgroundColor: 'hsl(var(--instagram))' }}>
-                    <Link href="https://www.instagram.com/ranvir_kgpian/?__pwa=1#" target="_blank" rel="noopener noreferrer">
-                      <Instagram className="mr-2 h-5 w-5" /> Instagram
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="md" className="border-transparent text-white hover:opacity-90" style={{ backgroundColor: 'hsl(var(--twitter))' }}>
-                    <Link href="https://x.com/Ranvir_kgpian" target="_blank" rel="noopener noreferrer">
-                      <TwitterIcon className="mr-2 h-5 w-5" /> Twitter
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="md" className="border-transparent text-white hover:opacity-90" style={{ backgroundColor: 'hsl(var(--linkedin))' }}>
-                    <Link href="https://www.linkedin.com/in/ranvir-kumar-862b4a284/" target="_blank" rel="noopener noreferrer">
-                      <Linkedin className="mr-2 h-5 w-5" /> LinkedIn
+                <div className="flex flex-col sm:flex-row gap-2 justify-center lg:justify-start">
+                  <Button asChild size="lg">
+                    <Link href="/projects">
+                      View Projects <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>
                 </div>
+              </div>
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto">
+                <Image
+                  src="/Full.jpg"
+                  alt="Ranvir Kumar"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="rounded-full shadow-2xl"
+                  priority
+                  sizes="(max-width: 639px) 16rem, (max-width: 767px) 20rem, (max-width: 1023px) 24rem, (max-width: 1279px) 28rem, 32rem"
+                />
               </div>
             </div>
           </div>
         </section>
-        
       </main>
-
-      <footer className="py-6 md:py-8 border-t bg-black">
-        <div className="container px-4 md:px-6 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm text-white font-bold">
-            &copy; {new Date().getFullYear()} Ranvir Kumar. All rights reserved.
-          </p>
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <Link href="https://www.linkedin.com/in/ranvir-kumar-862b4a284/" passHref target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-               <Linkedin className="h-6 w-6 text-linkedin hover:opacity-80 transition-opacity" />
-            </Link>
-            <Link href="https://www.instagram.com/ranvir_kgpian/?__pwa=1#" passHref target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-               <Instagram className="h-6 w-6 text-instagram hover:opacity-80 transition-opacity" />
-            </Link>
-            <Link href="https://x.com/Ranvir_kgpian" passHref target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-               <TwitterIcon className="h-6 w-6 text-twitter hover:opacity-80 transition-opacity" />
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

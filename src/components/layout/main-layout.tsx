@@ -1,81 +1,45 @@
-
 "use client";
 
 import type { PropsWithChildren } from "react";
-import {
-  SidebarProvider,
-  Sidebar,
-  SidebarHeader,
-  SidebarTrigger,
-  SidebarContent,
-  SidebarInset,
-  SidebarFooter,
-  useSidebar, 
-} from "@/components/ui/sidebar";
-import { SidebarNav } from "./sidebar-nav";
-import { Button } from "@/components/ui/button"; 
-import { Menu, X, LayoutDashboard } from "lucide-react"; 
+import { Navbar } from "./navbar";
 import Link from "next/link";
-
-// Inner component to consume sidebar context, as hooks must be called within Provider's children
-const LayoutContent = ({ children }: PropsWithChildren) => {
-  const { open, openMobile, isMobile, toggleSidebar } = useSidebar();
-
-  // Determine if the sidebar is effectively open, considering mobile and desktop states
-  const sidebarEffectivelyOpen = isMobile ? openMobile : open;
-
-  return (
-    <>
-      <Sidebar collapsible="offcanvas">
-        <SidebarHeader className="p-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 font-semibold text-lg text-sidebar-primary hover:text-sidebar-primary/80">
-              <LayoutDashboard className="h-5 w-5 flex-shrink-0" />
-              <span> 
-                Ranvir's Portfolio
-              </span>
-            </Link>
-            {/* Close button inside SidebarHeader, visible only when sidebar is open */}
-            {sidebarEffectivelyOpen && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleSidebar}
-                className="text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                aria-label="Close sidebar"
-              >
-                <X className="h-5 w-5" />
-              </Button>
-            )}
-          </div>
-        </SidebarHeader>
-        <SidebarContent className="p-0">
-          <SidebarNav />
-        </SidebarContent>
-        <SidebarFooter className="p-4 mt-auto">
-          {/* Optional: Add a footer item like logout if needed in future */}
-        </SidebarFooter>
-      </Sidebar>
-      <SidebarInset className="flex flex-col">
-        <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 sm:py-4">
-           {/* SidebarTrigger (Menu icon) to open the sidebar, hidden when sidebar is open */}
-           {!sidebarEffectivelyOpen && <SidebarTrigger />}
-           <div className="flex-grow"></div>
-           {/* Optional: User Menu / Settings */}
-        </header>
-        <main className="flex-1 overflow-auto p-4 sm:p-6">
-            {children}
-        </main>
-      </SidebarInset>
-    </>
-  );
-};
+import { LayoutDashboard, Linkedin, Instagram, Twitter } from "lucide-react";
 
 export function MainLayout({ children }: PropsWithChildren) {
   return (
-    <SidebarProvider defaultOpen={false}> {/* Changed defaultOpen to false for offcanvas behavior */}
-      <LayoutContent>{children}</LayoutContent>
-    </SidebarProvider>
+    <div className="flex flex-col min-h-screen">
+      <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
+        <Link href="/" className="flex items-center gap-2 font-semibold text-lg text-primary hover:text-primary/80">
+          <LayoutDashboard className="h-6 w-6" />
+          <span>
+            Ranvir's Portfolio
+          </span>
+        </Link>
+        <div className="flex-grow" />
+        <Navbar />
+      </header>
+      <main className="flex-1 overflow-auto p-4 sm:p-6">
+        {children}
+      </main>
+      <footer className="py-6 md:py-8 border-t">
+        <div className="container px-4 md:px-6 flex flex-col md:flex-row items-center justify-between">
+          <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} Ranvir Kumar. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-4 mt-4 md:mt-0">
+            <Link href="https://www.linkedin.com/in/ranvir-kumar-862b4a284/" passHref target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+            </Link>
+            <Link href="https://www.instagram.com/ranvir_kgpian/?__pwa=1#" passHref target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+            </Link>
+            <Link href="https://x.com/Ranvir_kgpian" passHref target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
+            </Link>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
 

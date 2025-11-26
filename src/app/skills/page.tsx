@@ -1,7 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle2 } from "lucide-react";
+import { Check } from "lucide-react";
 
 const skills = [
   { name: "Team Work", category: "Soft Skills" },
@@ -27,21 +26,23 @@ const skillCategories = Array.from(new Set(skills.map(skill => skill.category)))
 
 export default function SkillsPage() {
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-4xl font-bold mb-8 text-primary">My Skills</h1>
+    <div className="container mx-auto py-12 px-4 md:px-6">
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+        My Skills
+      </h1>
       
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map(category => (
-          <Card key={category} className="shadow-md hover:shadow-lg transition-shadow duration-300">
+          <Card key={category} className="shadow-sm hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl font-semibold text-primary">{category}</CardTitle>
+              <CardTitle>{category}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {skills.filter(skill => skill.category === category).map((skill) => (
                   <li key={skill.name} className="flex items-center">
-                    <CheckCircle2 className="h-5 w-5 mr-3 text-green-500 flex-shrink-0" />
-                    <span className="text-base">{skill.name}</span>
+                    <Check className="h-4 w-4 mr-2 text-primary" />
+                    <span>{skill.name}</span>
                   </li>
                 ))}
               </ul>
@@ -49,19 +50,6 @@ export default function SkillsPage() {
           </Card>
         ))}
       </div>
-
-      <Card className="mt-12 shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-2xl font-semibold text-primary">Highlighted Skills</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-wrap gap-3">
-          {skills.map((skill) => (
-            <Badge key={skill.name} variant="secondary" className="text-lg px-4 py-2 bg-primary/10 text-primary border-primary/30">
-              {skill.name}
-            </Badge>
-          ))}
-        </CardContent>
-      </Card>
     </div>
   );
 }
