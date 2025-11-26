@@ -21,7 +21,8 @@ export default function HomePage() {
                   </p>
                 </div>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl mx-auto lg:mx-0">
-                  A passionate and dedicated civil engineering student with a strong foundation in structural analysis, design, and project management. Eager to apply my skills and knowledge to solve real-world challenges.
+                My name is Ranvir Kumar, and I am a third-year undergraduate student in the Department of Civil Engineering, enrolled in the B.Tech program. I am a boarder of Jagdish Chandra Bose Hall of Residence and I am from Patna, Bihar.
+                I am a passionate and dedicated civil engineering student with a strong foundation in structural analysis, design, and project management. I am eager to apply my skills and knowledge to solve real-world engineering challenges.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2 justify-center lg:justify-start">
                   <Button asChild size="lg">
@@ -33,7 +34,7 @@ export default function HomePage() {
               </div>
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto">
                 <Image
-                  src="/Full.jpg"
+                  src="/Gemini_Generated_Image_4wgkl64wgkl64wgk.png"
                   alt="Ranvir Kumar"
                   fill
                   style={{ objectFit: 'cover' }}
