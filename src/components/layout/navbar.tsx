@@ -43,7 +43,7 @@ export function Navbar({
       <div
         data-testid="mobile-menu"
         className={cn(
-          "fixed inset-0 z-50 flex flex-col bg-background transition-transform duration-300 ease-in-out md:hidden",
+          "fixed inset-0 z-50 flex flex-col bg-white dark:bg-gray-950 transition-transform duration-300 ease-in-out md:hidden",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
