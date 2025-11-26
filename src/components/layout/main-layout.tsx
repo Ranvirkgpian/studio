@@ -5,6 +5,7 @@ import { Navbar } from "./navbar";
 import Link from "next/link";
 import { Menu, Linkedin, Instagram, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function MainLayout({ children }: PropsWithChildren) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -14,7 +15,6 @@ export function MainLayout({ children }: PropsWithChildren) {
       <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6 md:justify-center">
         <div className="flex items-center md:hidden">
           <Button
-            variant="ghost"
             size="icon"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="rounded-full"
@@ -27,6 +27,15 @@ export function MainLayout({ children }: PropsWithChildren) {
           isMobileMenuOpen={isMobileMenuOpen}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
+        <div className="flex items-center md:hidden">
+          <Image
+            src="/Gemini_Generated_Image_4wgkl64wgkl64wgk.png"
+            alt="Ranvir Kumar"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+        </div>
       </header>
       <main className="flex-1 overflow-auto p-4 sm:p-6">
         {children}

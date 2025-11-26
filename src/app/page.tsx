@@ -32,17 +32,6 @@ export default function HomePage() {
                   </Button>
                 </div>
               </div>
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] mx-auto">
-                <Image
-                  src="/Gemini_Generated_Image_4wgkl64wgkl64wgk.png"
-                  alt="Ranvir Kumar"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  className="rounded-full shadow-2xl"
-                  priority
-                  sizes="(max-width: 639px) 16rem, (max-width: 767px) 20rem, (max-width: 1023px) 24rem, (max-width: 1279px) 28rem, 32rem"
-                />
-              </div>
             </div>
           </div>
         </section>
