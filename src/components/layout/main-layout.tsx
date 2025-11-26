@@ -1,22 +1,32 @@
 "use client";
 
-import type { PropsWithChildren } from "react";
+import { useState, type PropsWithChildren } from "react";
 import { Navbar } from "./navbar";
 import Link from "next/link";
-import { LayoutDashboard, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Menu, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function MainLayout({ children }: PropsWithChildren) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-lg text-primary hover:text-primary/80">
-          <LayoutDashboard className="h-6 w-6" />
-          <span>
-            Ranvir's Portfolio
-          </span>
-        </Link>
-        <div className="flex-grow" />
-        <Navbar />
+      <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6 md:justify-center">
+        <div className="flex items-center md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="rounded-full"
+            aria-label="Toggle mobile menu"
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </div>
+        <Navbar
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
       </header>
       <main className="flex-1 overflow-auto p-4 sm:p-6">
         {children}
@@ -42,4 +52,3 @@ export function MainLayout({ children }: PropsWithChildren) {
     </div>
   );
 }
-
