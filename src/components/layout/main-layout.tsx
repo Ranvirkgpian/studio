@@ -8,14 +8,7 @@ import { LayoutDashboard, Linkedin, Instagram, Twitter } from "lucide-react";
 export function MainLayout({ children }: PropsWithChildren) {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-lg text-primary hover:text-primary/80">
-          <LayoutDashboard className="h-6 w-6" />
-          <span>
-            Ranvir's Portfolio
-          </span>
-        </Link>
-        <div className="flex-grow" />
+      <header className="sticky top-0 z-10 flex h-auto md:h-16 items-center justify-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
         <Navbar />
       </header>
       <main className="flex-1 overflow-auto p-4 sm:p-6">
