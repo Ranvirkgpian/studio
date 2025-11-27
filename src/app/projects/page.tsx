@@ -49,15 +49,18 @@ const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Portfolio Website (This Project!)",
-    description: "Development of this personal portfolio website using Next.js, TypeScript, and Tailwind CSS, showcasing skills and projects.",
-    imageUrl: "https://picsum.photos/600/400",
+    title: "Structural Analysis on Forth Bridge",
+    description: "I perform structural design and analysis using engineering codes and advanced software, developing accurate models, evaluating loads, and ensuring safe, efficient, and reliable structures through computational tools and modern matrix analysis techniques.",
+    imageUrl: "/forth-bridge (1).jpg",
     imageHint: "web design code",
     details: [
-      "Technologies: Next.js, React, TypeScript, Tailwind CSS, ShadCN UI.",
-      "Features: Responsive design, component-based architecture, dynamic content sections."
+      "Technologies: Python, Matrix Structural Analysis, FEM, IS/IRC Codes.",
+      "Features: Structural modelling, load analysis, deflection evaluation, code-based design checks, and automated result visualization.",
+      "Project Link: https://drive.google.com/file/d/10jKS4I5S1CBUNp_I5u0CmyotJTSqZ47W/view?usp=drive_link",
     ],
-    viewUrls: ["#"],
+    viewUrls: ["/home/user/studio/public/MSA Final project Group 3 (1).pptx"
+      
+    ],
   },
 ];
 
@@ -93,7 +96,7 @@ export default function ProjectsPage() {
             </CardHeader>
             <CardContent className="flex flex-col flex-grow">
               <CardDescription className="mb-4">{project.description}</CardDescription>
-              {project.details?.length > 0 && (
+              {project.details && project.details.length > 0 && (
                 <div className="mb-4">
                   <h4 className="font-semibold mb-2 text-sm">Details:</h4>
                   <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
