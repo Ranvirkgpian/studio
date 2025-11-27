@@ -12,6 +12,7 @@ interface Achievement {
   date: string;
   issuer?: string;
   documenturl?: string;
+  internshipPeriod?: string;
 }
 
 const achievements: Achievement[] = [
@@ -38,6 +39,15 @@ const achievements: Achievement[] = [
     date: "15th MAY 2025",
     issuer: "HP FOUNDATION & HP LIFE",
     documenturl: "/CASH_FLOW.pdf",
+  },
+  {
+    id: "4",
+    title: "Internship on Web Development",
+    type: "Certificate",
+    date: "21st August 2025 to 30th September 2025",
+    issuer: "AICTE collaboration with IBM",
+    documenturl: "/AICTE B3_PL_4001-6099-80.pdf",
+    internshipPeriod: "6 weeks",
   },
 ];
 
@@ -68,6 +78,7 @@ export default function AchievementsPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">Date: {achievement.date}</p>
+              {achievement.internshipPeriod && <p className="text-sm text-muted-foreground mb-4">Period: {achievement.internshipPeriod}</p>}
               <Button
                 variant="outline"
                 size="sm"
