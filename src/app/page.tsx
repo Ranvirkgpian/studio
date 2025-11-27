@@ -29,7 +29,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button asChild size="lg" className="h-12 px-8 text-base shadow-lg hover:shadow-primary/25 transition-all">
                   <Link href="/projects">
-                    View Portfolio <ArrowRight className="ml-2 h-5 w-5" />
+                    View Project <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base border-primary/20 hover:bg-primary/5">
@@ -73,7 +73,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-bold">Background</h3>
                 <p className="text-muted-foreground">
-                  From Patna, Bihar. Currently a 3rd-year undergrad at IIT Kharagpur, residing in J.C. Bose Hall.
+                  From Patna, Bihar. Currently a third-year undergraduate student at IIT Kharagpur, residing in Jagdish Chandra Bose Hall of Residence.
                 </p>
              </div>
 
