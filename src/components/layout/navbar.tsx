@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import {
   Briefcase,
   Award,
@@ -36,46 +38,54 @@ export function Navbar({
   setIsMobileMenuOpen,
 }: NavbarProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
       {/* Mobile Menu */}
-      <div
-        data-testid="mobile-menu"
-        className={cn(
-          "fixed inset-0 z-50 flex flex-col bg-white dark:bg-gray-950 transition-transform duration-300 ease-in-out md:hidden",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        )}
-      >
-        <div className="flex items-center justify-end p-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="rounded-full"
-            aria-label="Close mobile menu"
-          >
-            <X className="h-6 w-6" />
-          </Button>
-        </div>
-        <nav className="flex flex-col items-center justify-center flex-1 gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
+      {mounted && createPortal(
+        <div
+          data-testid="mobile-menu"
+          className={cn(
+            "fixed inset-0 z-50 flex flex-col bg-white dark:bg-gray-950 transition-transform duration-300 ease-in-out md:hidden",
+            isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          )}
+        >
+          <div className="flex items-center justify-end p-4">
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={cn(
-                "text-2xl font-semibold transition-colors hover:text-primary",
-                pathname === item.href
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              )}
+              className="rounded-full"
+              aria-label="Close mobile menu"
             >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+              <X className="h-6 w-6" />
+            </Button>
+          </div>
+          <nav className="flex flex-col items-center justify-center flex-1 gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-2xl font-semibold transition-colors hover:text-primary",
+                  pathname === item.href
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>,
+        document.body
+      )}
 
       {/* Desktop Menu */}
       <nav
