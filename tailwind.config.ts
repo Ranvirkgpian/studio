@@ -64,7 +64,7 @@ export default {
         instagram: 'hsl(var(--instagram))',
         linkedin: 'hsl(var(--linkedin))', 
         whatsapp: 'hsl(var(--whatsapp))',
-        twitter: 'hsl(var(--twitter))', // Added Twitter color
+        twitter: 'hsl(var(--twitter))',
         email: 'hsl(var(--email))',
   		},
   		borderRadius: {
@@ -72,6 +72,11 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+      boxShadow: {
+        'soft': '0 2px 10px rgba(0, 0, 0, 0.03)',
+        'medium': '0 4px 20px rgba(0, 0, 0, 0.06)',
+        'hard': '0 10px 30px rgba(0, 0, 0, 0.1)',
+      },
   		keyframes: {
   			'accordion-down': {
   				from: {
