@@ -56,9 +56,9 @@ const projects: Project[] = [
     details: [
       "Technologies: Python, Matrix Structural Analysis, FEM, IS/IRC Codes.",
       "Features: Structural modelling, load analysis, deflection evaluation, code-based design checks, and automated result visualization.",
-      "Project Link: https://drive.google.com/file/d/10jKS4I5S1CBUNp_I5u0CmyotJTSqZ47W/view?usp=drive_link",
+      "Project Link: https://docs.google.com/presentation/d/1NLbyDhX5awldHWkCaACCqkmDmTobcZbD/edit?usp=drive_link&ouid=105585205526942054103&rtpof=true&sd=true",
     ],
-    viewUrls: ["/home/user/studio/public/MSA Final project Group 3 (1).pptx"
+    viewUrls: ["/Group 3.pdf"
       
     ],
   },
